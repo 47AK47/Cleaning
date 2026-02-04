@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pocono Turnover Cleaning</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --primary: #2c7be5;
+  --accent: #5ddcff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --success: #16a34a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(180deg, #f8fafc, #eef2f7);
+  color: var(--text);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+.badge {
+  display: inline-block;
+  background: #fff7ed;
+  color: #c2410c;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin: 0.5rem 0;
+}
+
+p.lead {
+  color: var(--muted);
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+.section {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+.form-card {
+  position: sticky;
+  top: 1.2rem;
+  background: var(--card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.form-card h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.7rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+button {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border: none;
+  color: white;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.95;
+}
+
+.small {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.checkbox-group label {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.ai-hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.map {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 0.75rem;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 2rem 0 1rem;
+}
+
+/* --- Mobile-first layout upgrade (2026-02) --- */
+.container{ max-width: 1100px; }
+body{ font-size: 16px; }
+.navLinks a{ padding:10px 12px; border-radius:12px; }
+.btn{ padding:12px 14px; border-radius:14px; }
+input, select, textarea{ padding:12px 12px; border-radius:14px; font-size:16px; }
+label{ font-weight:600; }
+.quote{ position: sticky; top: 18px; }
+.heroGrid{ align-items:start; }
+@media (max-width: 920px){
+  /* On phones: show the form first (top) and keep everything single-column */
+  .heroGrid{ grid-template-columns: 1fr !important; }
+  .heroGrid > *:nth-child(1){ order: 2; } /* text */
+  .heroGrid > *:nth-child(2){ order: 1; } /* form */
+  .quote{ position: static; }
+}
+@media (min-width: 921px){
+  /* On desktop: keep form top-right and aligned */
+  .heroGrid{ grid-template-columns: 1.15fr .85fr; }
+  .quote{ margin-left:auto; }
+}
+
+
+.leftCol{ padding-right: 6px; }
+.rightCol{ align-self:start; }
+@media (max-width: 920px){
+  .leftCol{ padding-right: 0; }
+}
+
+
+#home .container.hero{ padding-top: 22px; padding-bottom: 22px; }
+#home .leftCol{ background: rgba(255,255,255,.55); border: 1px solid rgba(226,232,240,.7); border-radius: 18px; padding: 18px; box-shadow: 0 10px 22px rgba(2,6,23,.04); }
+@media (max-width: 920px){
+  #home .leftCol{ background: transparent; border: 0; padding: 0; box-shadow: none; }
+}
+
+
+/* --- Dark Blue Theme + Centered Form (2026-02) --- */
+:root{
+  --bg-main:#0b1f3a;
+  --bg-card:#102a4d;
+  --bg-soft:#14365f;
+  --text-main:#f8fafc;
+  --text-muted:#cbd5e1;
+  --accent:#38bdf8;
+}
+
+body{
+  background:var(--bg-main);
+  color:var(--text-main);
+}
+
+header, section{
+  background:transparent;
+}
+
+h1,h2,h3,h4{
+  color:#ffffff;
+}
+
+p, li, label{
+  color:var(--text-main);
+}
+
+.heroBadge{
+  background:linear-gradient(90deg,#1d4ed8,#38bdf8);
+  color:#ffffff;
+}
+
+.quote{
+  background:var(--bg-card);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+input, select, textarea{
+  background:var(--bg-soft);
+  color:#ffffff;
+  border:1px solid rgba(255,255,255,.15);
+}
+
+input::placeholder, textarea::placeholder{
+  color:var(--text-muted);
+}
+
+.formGroup{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:left;
+}
+
+.formGroup label{
+  width:100%;
+  max-width:420px;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea{
+  width:100%;
+  max-width:420px;
+}
+
+.checkboxGroup{
+  max-width:420px;
+  margin:0 auto;
+}
+
+.btnPrimary{
+  background:linear-gradient(90deg,#2563eb,#38bdf8);
+  color:#fff;
+}
+
+.btnPrimary:hover{
+  filter:brightness(1.1);
+}
+
+.card{
+  background:var(--bg-card);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.mapWrap{
+  background:var(--bg-card);
+  border-radius:16px;
+  overflow:hidden;
+}
+
+footer{
+  background:#08172b;
+  color:var(--text-muted);
+}
+
+@media (max-width: 920px){
+  .quote{
+    margin:0 auto;
+  }
+}
+
+
+/* --- Section background styling (Airbnb / Quote / Services / Location) --- */
+#hosts, #services, #map, #home{
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+#services .container, #hosts .container, #map .container, #home .container{
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 22px;
+  padding: 22px;
+}
+[data-theme="light"] #services .container,
+[data-theme="light"] #hosts .container,
+[data-theme="light"] #map .container,
+[data-theme="light"] #home .container{
+  background: rgba(15,23,42,.03);
+  border: 1px solid rgba(15,23,42,.08);
+}
+@media (max-width: 920px){
+  #services .container, #hosts .container, #map .container, #home .container{ padding: 16px; }
+}
+
+
+/* --- Modal for checklist --- */
+.modal{ position:fixed; inset:0; display:none; z-index:9999; }
+.modal[aria-hidden="false"]{ display:block; }
+.modalBackdrop{ position:absolute; inset:0; background: rgba(0,0,0,.55); }
+.modalPanel{
+  position:relative;
+  width:min(980px, 92vw);
+  margin: 6vh auto;
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  box-shadow: 0 30px 90px rgba(0,0,0,.45);
+  overflow:hidden;
+}
+[data-theme="light"] .modalPanel{
+  border: 1px solid rgba(15,23,42,.10);
+  box-shadow: 0 24px 70px rgba(2,6,23,.18);
+}
+.modalHead{
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:16px; padding:14px 14px 10px 14px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+[data-theme="light"] .modalHead{ border-bottom:1px solid rgba(15,23,42,.10); }
+.modalTitle{ font-weight:800; font-size:16px; margin-bottom:4px; }
+.modalBody{ padding: 12px 14px 16px; }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- LEFT CONTENT -->
+  <main>
+    <header>
+      <span class="badge">⚡ Same‑Day Turnover Available</span>
+      <h1>Airbnb & Short‑Term Rental Cleaning<br>Pocono Mountains, PA</h1>
+      <p class="lead">
+        Professional, reliable turnover cleaning for Airbnb, VRBO, and short‑term rentals.
+        We specialize in fast, detail‑oriented resets so your next guests walk into a spotless space.
+      </p>
+    </header>
+
+    <section class="section">
+      <h3>What We Do</h3>
+      <ul>
+        <li>Full turnover cleaning (kitchen, baths, living areas)</li>
+        <li>Laundry – wash & fold</li>
+        <li>Bedding, pillows & blankets (separate handling)</li>
+        <li>Carpet & area rug cleaning</li>
+        <li>Restocking essentials for your guests</li>
+      </ul>
+      <p class="small">We can clean using <strong>our professional products</strong> or yours — your preference.</p>
+    </section>
+
+    <section class="section">
+      <h3>Designed for Airbnb Hosts</h3>
+      <ul>
+        <li>Fast communication — responses within 1 hour</li>
+        <li>Same‑day turnovers available</li>
+        <li>Photo & instruction uploads</li>
+        <li>Optional restocking</li>
+      </ul>
+      <a href="turnover-checklist.pdf" download>
+        <button style="margin-top:0.5rem;">Download Turnover Checklist (PDF)</button>
+      </a>
+    </section>
+
+    <section class="section">
+      <h3>Location</h3>
+      <p class="small">Based in the Pocono Mountains. Service areas are kept private for flexibility.</p>
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps?q=Pocono+Mountains+PA&output=embed"
+          width="100%"
+          height="220"
+          style="border:0;"
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- RIGHT FORM -->
+  <aside class="form-card">
+    <h2>Request a Quote</h2>
+    <p class="small">We respond within 1 hour.</p>
+
+    <form
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST"
+      enctype="multipart/form-data"
+      class="form-grid">
+
+      <!-- Honeypot -->
+      <input type="text" name="company" style="display:none">
+
+      <input type="text" name="name" placeholder="Full name" required>
+      <input type="email" name="email" placeholder="Email address" required>
+      <input type="tel" name="phone" placeholder="Phone number">
+      <input type="text" name="zip" placeholder="ZIP code" required>
+
+      <select name="service" required>
+        <option value="">Select service</option>
+        <option>Turnover Cleaning</option>
+        <option>Deep Cleaning</option>
+        <option>Laundry Service</option>
+        <option>Carpet / Rug Cleaning</option>
+      </select>
+
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="addon_coffee"> Coffee / Tea</label>
+        <label><input type="checkbox" name="addon_paper"> Toilet Paper & Paper Towels</label>
+        <label><input type="checkbox" name="addon_soap"> Soaps & Toiletries</label>
+        <label><input type="checkbox" name="addon_trash"> Trash Bags</label>
+      </div>
+
+      <textarea name="notes" placeholder="Notes or instructions (you can type naturally — AI‑friendly)"></textarea>
+      <span class="ai-hint">Tip: You can write casually — we’ll interpret details for you.</span>
+
+      <input type="file" name="photos">
+      <input type="text" name="share_link" placeholder="Photo / document link (optional)">
+
+      <button type="submit">Request a Quote</button>
+    </form>
+  </aside>
+
+</div>
+
+<footer>
+  © 2026 Pocono Turnover Cleaning · Airbnb‑Focused · Mobile Friendly
+</footer>
+
+
+  <!-- Turnover checklist modal -->
+  <div class="modal" id="checklistModal" aria-hidden="true">
+    <div class="modalBackdrop" data-close="1"></div>
+    <div class="modalPanel" role="dialog" aria-modal="true" aria-label="Turnover checklist">
+      <div class="modalHead">
+        <div>
+          <div class="modalTitle">Turnover Checklist</div>
+          <div class="fine">Opens inside the website. If it doesn’t load, upload <b>turnover-checklist.pdf</b> to your repo root.</div>
+        </div>
+        <button class="btn ghost" type="button" id="closeChecklist">Close</button>
+      </div>
+      <div class="modalBody">
+        <iframe title="Turnover checklist PDF" src="turnover-checklist.pdf" style="width:100%; height:72vh; border:0; background:var(--bg-soft);"></iframe>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
